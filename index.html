@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players Stats Comparison - Sign In</title>
+    <link rel="stylesheet" href="proj.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+<body>
+    <ul id="navbar" ng-app="myApp" ng-controller="mainCtrl">
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/football">Football</a></li>
+        <li><a href="/comparison">Comparison</a></li>
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/signin">Sign In</a></li>
+    </ul>
+    <center>
+    <div class="info-row">
+        <div class="form-container">
+            <h2>Sign In</h2>
+            <form id="signin-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Sign In</button>
+            </form>
+
+            <div id="message"></div> <!-- Display error/success messages here -->
+        </div>
+    </div>
+    </center>
+
+
+    <script>
+        document.getElementById('signin-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (response.status === 200) {
+                    // If login is successful, redirect to the /football page
+                    alert("LOGIN SUCCESSFUL")
+                    window.location.href = '/football';
+                } else {
+                    // Display error message
+                    document.getElementById('message').innerHTML = `<p style="color: red;">${result.message}</p>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('message').innerHTML = `<p style="color: red;">An error occurred during sign-in.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players Stats Comparison - Sign Up</title>
+    <link rel="stylesheet" href="proj.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+<body>
+    <ul id="navbar" ng-app="myApp" ng-controller="mainCtrl">
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/football">Football</a></li>
+        <li><a href="/comparison">Comparison</a></li>
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/signin">Sign Up</a></li>
+    </ul>
+    <center>
+    <div class="info-row">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="reEnterPassword">Re-Enter Password:</label>
+                <input type="password" id="reEnterPassword" name="reEnterPassword" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div id="message"></div> <!-- For success/error messages -->
+        </div>
+    </div></center>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get the form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const reEnterPassword = document.getElementById('reEnterPassword').value;
+
+            // Check if passwords match
+            if (password !== reEnterPassword) {
+                document.getElementById('message').innerHTML = "<p style='color: red;'>Passwords do not match!</p>";
+                return;
+            }
+
+            // Send the data to the backend
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                // Display the result
+                const messageDiv = document.getElementById('message');
+                if (response.status === 201) {
+                    messageDiv.innerHTML = `<p style="color: green;">${result.message}</p>`;
+                } else {
+                    messageDiv.innerHTML = `<p style="color: red;">${result.message}</p>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+

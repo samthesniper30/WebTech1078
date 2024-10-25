@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PLAYERS STATS COMPARISON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="proj.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    </head>
+    <body>
+        <ul id="navbar" ng-app="myApp" ng-controller="mainCtrl">
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/football">Football</a></li>
+            <li><a href="/comparison">Comparison</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/signin">SignUp</a></li>
+        </ul><br><br>
+
+        <!-- Input fields for player names and button -->
+        <input id="pls1" type="text" placeholder="Enter player 1 name">
+        <input id="pls2" type="text" placeholder="Enter player 2 name">
+        <button onclick="getPlayerStats()">Compare</button>
+
+        <div id="pl">
+            <!-- Player 1 and Player 2 cards -->
+            <img src="com_card.png" class="card1">
+            <img id="st2" src="st.jpg">
+            <img src="com_card.png" class="card2">
+            <img id="st1" src="st.jpg">
+
+            <!-- Player 1 stats -->
+            <p id="ovr"></p>
+            <p id="pos"></p>
+            <table id="stats">
+                <tr><td id="p1Stat1"></td><td id="p1Stat2"></td></tr>
+                <tr><td id="p1Stat3"></td><td id="p1Stat4"></td></tr>
+                <tr><td id="p1Stat5"></td><td id="p1Stat6"></td></tr>
+            </table>
+
+            <!-- Player 2 stats -->
+            <p id="ovr1"></p>
+            <p id="pos1"></p>
+            <table id="stats1">
+                <tr><td id="p2Stat1"></td><td id="p2Stat2"></td></tr>
+                <tr><td id="p2Stat3"></td><td id="p2Stat4"></td></tr>
+                <tr><td id="p2Stat5"></td><td id="p2Stat6"></td></tr>
+            </table>
+        </div>
+
+        <script>
+            function getPlayerStats() {
+                const player1 = document.getElementById('pls1').value;
+                const player2 = document.getElementById('pls2').value;
+
+                // Fetch stats for player 1
+                if (player1) {
+                    fetch(`/getPlayer?name=${player1}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const p1ovr=document.getElementById('ovr').textContent;
+                            document.getElementById('ovr').textContent =data.Rating;
+                            document.getElementById('pos').textContent =data.National_Position;
+
+                            // Populate table cells for player 1
+                            document.getElementById('p1Stat1').textContent =data.Speed;
+                            document.getElementById('p1Stat2').textContent =data.Dribbling;
+                            document.getElementById('p1Stat3').textContent =data.Shot_Power;
+                            document.getElementById('p1Stat4').textContent =data.Standing_Tackle;
+                            document.getElementById('p1Stat5').textContent =data.Short_Pass;
+                            document.getElementById('p1Stat6').textContent =data.Strength;
+                        })
+                        .catch(err => console.error(err));
+                }
+
+                // Fetch stats for player 2
+                if (player2) {
+                    fetch(`/getPlayer?name=${player2}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const p2ovr=document.getElementById('ovr1').textContent;
+                            document.getElementById('ovr1').textContent =data.Rating;
+                            document.getElementById('pos1').textContent =data.National_Position;
+
+                            // Populate table cells for player 1
+                            document.getElementById('p2Stat1').textContent =data.Speed;
+                            document.getElementById('p2Stat2').textContent =data.Dribbling;
+                            document.getElementById('p2Stat3').textContent =data.Shot_Power;
+                            document.getElementById('p2Stat4').textContent =data.Standing_Tackle;
+                            document.getElementById('p2Stat5').textContent =data.Short_Pass;
+                            document.getElementById('p2Stat6').textContent =data.Strength;
+                        })
+                        .catch(err => console.error(err));
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
+

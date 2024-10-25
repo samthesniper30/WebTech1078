@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PLAYERS STATS COMPARISON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="proj.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+                text-align: center;
+                margin-top: 30px;
+                color: white;
+            }
+            .container {
+                width: 80%;
+                margin: 20px auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .product-card {
+                width: 30%;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+                text-align: center;
+                border-radius: 10px;
+                transition: transform 0.5s ease;
+            }
+            .product-card img {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 10px;
+            }
+            .product-card h3 {
+                color: #333;
+                margin-bottom: 10px;
+            }
+            .product-card button {
+                background-color: #008080;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: background-color 0.3s ease;
+            }
+            .product-card button:hover {
+                background-color: #004d4d;
+            }
+            .hidden-description {
+                display: none;
+                margin-top: 10px;
+                color: #555;
+            }
+
+        </style>
+    </head>
+    <body>
+        <ul id="navbar" ng-app="myApp" ng-controller="mainCtrl">
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/football">Football</a></li>
+            <li><a href="/comparison">Comparison</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/signin">SignUp</a></li>
+        </ul>
+        
+        <br><br><center><h1>ABOUT US</h1></center>
+        <div class="container">
+            <div class="product-card">
+                <img src="https://keystoneacademic-res.cloudinary.com/image/upload/f_auto/q_auto/g_auto/w_780/dpr_2.0/element/10/107466_FdAinFootballCoaching-min.jpg" alt="Pain Reliever">
+                <h3>NOTE FOR COACHES</h3>
+                <button class="details-btn">Show Details</button>
+                <div class="hidden-description">As a coach, having access to comprehensive player statistics is crucial for making informed decisions about team strategy and player development. This sports player comparison platform empowers you to easily analyze and compare player performances across various metrics. With features like historical data analysis and real-time visualizations, you can gain deeper insights into player strengths and weaknesses. Whether evaluating potential recruits or assessing current team members, this tool enhances your ability to tailor training programs and optimize game strategies, ultimately contributing to your team's success.</div>
+            </div>
+            <div class="product-card">
+                <img src="https://www.epl.ca/wp-content/uploads/sites/18/2020/12/CodingSnowflakes_Dec2020_BlogCard_890x445.png" alt="Allergy Medication">
+                <h3>WHO WE ARE</h3>
+                <button class="details-btn">Show Details</button>
+                <div class="hidden-description">We are a dedicated team of sports enthusiasts, developers, and analysts passionate about enhancing the way fans, coaches, and analysts engage with player performance data. Our mission is to create an innovative platform that empowers users with easy access to comprehensive player statistics and comparisons across various sports. By combining technology with our love for sports, we aim to foster a deeper understanding of athletes and their achievements, making data-driven insights accessible to everyone. Together, we strive to build a vibrant community where sports discussions thrive and informed decisions are made.</div>
+            </div>
+            <div class="product-card">
+                <img src="https://www.isango.com/theguidebook/wp-content/uploads/2019/02/FC-Barcelona.6.1.jpg" alt="Cough Syrup">
+                <h3>NOTE TO FANS</h3>
+                <button class="details-btn">Show Details</button>
+                <div class="hidden-description">As a passionate sports fan, staying informed about player performances enhances your viewing experience and engagement with your favorite teams. This sports player comparison platform allows you to easily explore and compare statistics of players across different sports. With user-friendly features and dynamic visualizations, you can track player trends, analyze performances, and join discussions with fellow fans. Whether debating player selections or following your favorite athletes' journeys, this tool equips you with the insights you need to deepen your understanding and enjoyment of the game.</div>
+            </div>
+        </div>
+    
+        <script>
+            $(document).ready(function () {
+                // Toggle Products display
+                $('#toggle-products').click(function () {
+                    $('.product-card').slideToggle(1000);
+                });
+    
+                // Slide banner up/down
+                $('#slide-banner').click(function () {
+                    $('#banner').slideToggle(1000);
+                });
+    
+                // Fade banner in/out
+                $('#fade-banner').click(function () {
+                    $('#banner').fadeToggle(1000);
+                });
+    
+                // Toggle product details on button click
+                $('.details-btn').click(function () {
+                    $(this).next('.hidden-description').slideToggle(800);
+                    let text = $(this).text() === 'Show Details' ? 'Hide Details' : 'Show Details';
+                    $(this).text(text);
+                });
+    
+                // Animate product cards on hover
+                $('.product-card').hover(function () {
+                    $(this).animate({
+                        marginTop: '-=10px',
+                        boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)"
+                    }, 300);
+                }, function () {
+                    $(this).animate({
+                        marginTop: '+=10px',
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+                    }, 300);
+                });
+            });
+        </script>
+        
+    </body>    
+</html>

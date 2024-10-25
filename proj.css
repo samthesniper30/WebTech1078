@@ -1,0 +1,137 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    border-right: 1px solid #bbb;
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+.active {
+    background-color: red;
+}
+#navbar{
+    align-items:center;
+}
+body{
+    background-image: url('https://wallpapers.com/images/hd/best-sports-2o45enmn0nj0c6ww.jpg');
+    background-size: cover;
+}
+.icon{
+    background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fplayer-rating-cards&psig=AOvVaw3qOrv10MibKR35AVzmc0ca&ust=1729052316788000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLDksfnDj4kDFQAAAAAdAAAAABAE");
+    background-size: 100%;
+    width:300px;
+    height: 300px;
+}
+.card1{
+    width:550px;
+    height:700px;
+    padding-left: 100px;
+    position: absolute;
+    z-index: -1;
+}
+.card2{
+    width:550px;
+    height:700px;
+    padding-left: 800px;
+    position: absolute;
+    z-index: -1;
+}
+#st2{
+    padding-left: 300px;
+    padding-top: 100px;
+    z-index: 0;
+    position: absolute;
+}
+#st1{
+    padding-left: 1000px;
+    padding-top: 100px;
+    z-index: 0;
+    position: absolute;
+}
+#ovr{
+    padding-left: 250px;
+    position: absolute;
+    padding-bottom: 300px;
+    padding-top: 180px;
+}
+#pos{
+    padding-left: 250px;
+    padding-top: 232px;
+    position: absolute;
+}
+#ovr1{
+    padding-left: 950px;
+    position: absolute;
+    padding-bottom: 300px;
+    padding-top: 180px;
+
+}
+#pos1{
+    padding-left: 950px;
+    padding-top: 232px;
+    position: absolute;
+}
+#stats{
+    position: absolute;
+    width:42%;
+    padding-top: 460px;
+    padding-left: 220px;
+}
+#stats1{
+    position: absolute;
+    width:25%;
+    padding-top: 460px;
+    margin-left: 920px;
+}
+tr{
+    height: 40px;
+}
+#pl{
+    padding-top: 200px;
+}
+#pls2{
+    margin-left: 800px;
+    margin-top: 100px;
+}
+#pls1{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+.info-row {
+    align-items: center; margin: 20px 0; position: relative;
+}
+.info-row img, .info-text {
+    width: 50%; opacity: 0.8; position:relative;align-items: center;
+}
+.info-row .form-container {
+    /* position: absolute; top: 05px; left: 55px; */ width: 100%; max-width: 300px; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 8px;
+    margin-top: 200px;
+}
+.info-row .form-container h2 {
+    margin-top: 0; font-size: 1.2em;
+}
+.info-row label {
+    display: block; margin: 4px 0 2px;
+}
+.info-row input {
+    width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid lightgray; border-radius: 4px; font-size: 0.9em;
+}
+.info-row button {
+    background: black; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em;
+}
+.info-row button:hover {
+    background: gray;
+}
